@@ -1,4 +1,4 @@
-output "ANIBSLE" {
+output "ANSIBLE" {
     value = module.ansible.public_ip
 }
 
