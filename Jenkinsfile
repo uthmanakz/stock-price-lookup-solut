@@ -10,7 +10,7 @@ pipeline {
             steps {
             sh'''
             cd dev
-            terraform init
+            yes "yes" | terraform init
             '''
             }
         }
