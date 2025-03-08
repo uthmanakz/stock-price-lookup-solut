@@ -70,6 +70,7 @@ pipeline {
                            echo "stock-price-lookup-solut-playbook.git already exists so it has been git pulled instead" ;
                            cd
                         fi
+                        '
                         '''
                     }
                 }
