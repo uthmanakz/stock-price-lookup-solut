@@ -10,7 +10,7 @@ pipeline {
             steps {
             sh'''
             cd dev
-            yes "yes" | terraform init
+            terraform init
             '''
             }
         }
@@ -53,22 +53,22 @@ pipeline {
                         sh '''
                         ANSIBLE=$(terraform output | grep ANSIBLE | awk -F'"' '{print 2}')
                         ssh -o StrictHostKeyChecking=no ec2-user@$ANSIBLE '
-                        sudo yum install git -y
+                        sudo yum install git -y ;
                         if [ ! -d "stock-price-lookup-solut-inventory" ] ;
                         then
                            git clone https://github.com/uthmanakz/stock-price-lookup-solut-inventory.git ;
                         else
                            cd stock-price-lookup-solut-inventory && git pull ;
                            echo "stock-price-lookup-solut-inventory already exists so it has been git pulled instead" ;
-                           cd 
-                        fi
+                           cd ;
+                        fi ;
                         if [ ! -d "stock-price-lookup-solut-playbook" ] ;
                         then
                            git clone https://github.com/uthmanakz/stock-price-lookup-solut-playbook.git ;
                         else
-                           cd stock-price-lookup-solut-playbook && git pull
+                           cd stock-price-lookup-solut-playbook && git pull ;
                            echo "stock-price-lookup-solut-playbook.git already exists so it has been git pulled instead" ;
-                           cd
+                           cd ;
                         fi
                         '
                         '''
