@@ -51,6 +51,7 @@ pipeline {
                 script {
                     sshagent(credentials : ['SSH_PRIVATE_KEY']) {
                         sh '''
+                        cd dev
                         ANSIBLE=$(terraform output | grep ANSIBLE | awk -F'"' '{print $2}')
                         ssh -o StrictHostKeyChecking=no ec2-user@$ANSIBLE '
                         sudo yum install git -y ;
